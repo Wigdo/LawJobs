@@ -1,0 +1,4 @@
+# LawJobs
+
+Dependencies list: 
+- Jsoup
