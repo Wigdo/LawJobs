@@ -80,10 +80,14 @@ public class MauriceBlackburnJobList
         }
     }
 
-
-    public static void main (String [] args)
+    public int getJobArraySize()
     {
-        MauriceBlackburnJobList newTest = new MauriceBlackburnJobList();
+        return jobArray.size();
+    }
+
+    public int getLocationArraySize()
+    {
+        return locationArray.size();
     }
 
 }
