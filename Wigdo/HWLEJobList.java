@@ -20,7 +20,6 @@ public class HWLEJobList {
             Elements elementObj = docObj.select("*");
 
             for (Element row : elementObj.select("a[href]")) {
-
                 System.out.println(row.attributes());
             }
         }
