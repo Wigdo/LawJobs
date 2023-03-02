@@ -12,43 +12,51 @@ import java.util.List;
 
 public class AllensJobList {
 
+    private WebDriver driver;
+    private List<WebElement> list;
+
     public AllensJobList ()
 
     {
-        System.out.println("hello, you have instantiated the default constructor, congratulations!");
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        initiateDriver();
+        getTitle();
+        setJobElements();
+        getJobElements();
+        quitDriver();
     }
 
-    public void runTest ()
-
+    public void initiateDriver ()
     {
         //ChromeOptions options = new ChromeOptions();
-     //   options.setHeadless(true); make sure you pass options as an argument thus ChromeDriver(options)
-
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        //   options.setHeadless(true); make sure you pass options as an argument thus ChromeDriver(options)
 
         driver.get("https://fsr.cvmailuk.com/nortonrosefulbright/main.cfm?srxksl=1");
-
-        String title = driver.getTitle();
-
-        List<WebElement> list = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
-
-
-
-
-        WebElement webEl = driver.findElement(By.className("jobMoreDetailCaptionStyle"));
-        webEl.click();
-
-        driver.navigate().back();
-
-        list.get(2).click();
-
-        System.out.println(title);
-
-        driver.quit();
-
     }
 
+    public List<WebElement> setJobElements ()
+
+    {
+        list = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
+        return list;
+    }
+
+    public void getJobElements ()
+    {
+        System.out.println(list.get(1).getText());
+    }
+
+    public void getTitle()
+    {
+        String title = driver.getTitle();
+        System.out.println(title);
+    }
+
+    public void quitDriver ()
+    {
+        driver.quit();
+    }
 
 
 }

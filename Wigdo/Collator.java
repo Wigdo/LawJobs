@@ -13,7 +13,6 @@ public class Collator {
 
     {
         AllensJobList allensObj = new AllensJobList();
-        allensObj.runTest();
     }
 
     public void mauriceBlackburnCollate ()
