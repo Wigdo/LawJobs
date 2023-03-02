@@ -8,7 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
-
+import java.util.Iterator;
 
 public class AllensJobList {
 
@@ -18,8 +18,11 @@ public class AllensJobList {
     public AllensJobList ()
 
     {
+        ChromeOptions options = new ChromeOptions();
+        options.setHeadless(true);
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
+
         initiateDriver();
         getTitle();
         setJobElements();
@@ -29,8 +32,7 @@ public class AllensJobList {
 
     public void initiateDriver ()
     {
-        //ChromeOptions options = new ChromeOptions();
-        //   options.setHeadless(true); make sure you pass options as an argument thus ChromeDriver(options)
+
         // I can turn this class into a general use object !
         driver.get("https://fsr.cvmailuk.com/nortonrosefulbright/main.cfm?srxksl=1");
     }
@@ -44,7 +46,9 @@ public class AllensJobList {
 
     public void getJobElements ()
     {
-        System.out.println(list.get(1).getText());
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getText());
+        }
     }
 
     public void getTitle()
