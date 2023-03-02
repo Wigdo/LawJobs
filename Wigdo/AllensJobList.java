@@ -13,7 +13,8 @@ import java.util.Iterator;
 public class AllensJobList {
 
     private WebDriver driver;
-    private List<WebElement> list;
+    private List<WebElement> jobList;
+    private List<WebElement> locationList;
 
     public AllensJobList ()
 
@@ -33,21 +34,26 @@ public class AllensJobList {
     public void initiateDriver ()
     {
 
-        // I can turn this class into a general use object !
         driver.get("https://fsr.cvmailuk.com/nortonrosefulbright/main.cfm?srxksl=1");
     }
 
     public List<WebElement> setJobElements ()
 
     {
-        list = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
-        return list;
+        jobList = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
+        return jobList;
+    }
+
+    public List<WebElement> setLocation ()
+    {
+
+        return locationList;
     }
 
     public void getJobElements ()
     {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getText());
+        for (int i = 0; i < jobList.size(); i++) {
+            System.out.println(jobList.get(i).getText());
         }
     }
 
