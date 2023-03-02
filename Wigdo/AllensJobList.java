@@ -33,13 +33,15 @@ public class AllensJobList {
 
         List<WebElement> list = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
 
-        System.out.println(list.get(0));
-        System.out.println(list.get(1));
-        list.get(2).click();
-        driver.navigate().back();
+
+
 
         WebElement webEl = driver.findElement(By.className("jobMoreDetailCaptionStyle"));
         webEl.click();
+
+        driver.navigate().back();
+
+        list.get(2).click();
 
         System.out.println(title);
 
