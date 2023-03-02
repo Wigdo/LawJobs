@@ -4,8 +4,8 @@ public class Collator {
 
     Collator ()
     {
-       // mauriceBlackburnCollate();
-        HWLECollate();
+        mauriceBlackburnCollate();
+       // HWLECollate();
     }
 
     public void mauriceBlackburnCollate ()
