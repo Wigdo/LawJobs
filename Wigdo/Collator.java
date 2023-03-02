@@ -4,8 +4,16 @@ public class Collator {
 
     Collator ()
     {
+        allensJobCollator();
         mauriceBlackburnCollate();
        // HWLECollate();
+    }
+
+    public void allensJobCollator()
+
+    {
+        AllensJobList allensObj = new AllensJobList();
+        allensObj.runTest();
     }
 
     public void mauriceBlackburnCollate ()
