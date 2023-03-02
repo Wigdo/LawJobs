@@ -1,9 +1,14 @@
 package Wigdo;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.List;
+
 
 public class AllensJobList {
 
@@ -23,14 +28,25 @@ public class AllensJobList {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://fsr.cvmailuk.com/nortonrosefulbright/main.cfm?srxksl=1");
-        System.out.println(driver.getPageSource());
+
         String title = driver.getTitle();
+
+        List<WebElement> list = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
+
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        list.get(2).click();
+        driver.navigate().back();
+
+        WebElement webEl = driver.findElement(By.className("jobMoreDetailCaptionStyle"));
+        webEl.click();
 
         System.out.println(title);
 
         driver.quit();
 
     }
+
 
 
 }
