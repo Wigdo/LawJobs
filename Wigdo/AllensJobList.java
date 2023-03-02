@@ -31,7 +31,7 @@ public class AllensJobList {
     {
         //ChromeOptions options = new ChromeOptions();
         //   options.setHeadless(true); make sure you pass options as an argument thus ChromeDriver(options)
-
+        // I can turn this class into a general use object !
         driver.get("https://fsr.cvmailuk.com/nortonrosefulbright/main.cfm?srxksl=1");
     }
 
