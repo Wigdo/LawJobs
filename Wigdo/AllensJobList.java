@@ -14,7 +14,6 @@ public class AllensJobList {
     public void runTest ()
 
     {
-        System.out.println("Hello world");
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
 
