@@ -2,3 +2,4 @@
 
 Dependencies list: 
 - Jsoup
+- Selenium
