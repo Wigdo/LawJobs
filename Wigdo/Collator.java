@@ -5,8 +5,15 @@ public class Collator {
     Collator ()
     {
         allensJobCollator();
+        System.out.println("\nMaurice Blackburn Jobs: \n");
         mauriceBlackburnCollate();
-       // HWLECollate();
+        // HWLECollate();
+        //test();
+    }
+
+    public void test()
+    {
+        Test testObj = new Test();
     }
 
     public void allensJobCollator()

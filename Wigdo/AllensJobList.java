@@ -19,23 +19,26 @@ public class AllensJobList {
     public AllensJobList ()
 
     {
-        ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
+        ChromeOptions optionsTwo = new ChromeOptions();
+        optionsTwo.addArguments("--remote-allow-origins=*").setHeadless(true);
+
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver(optionsTwo);
 
         initiateDriver();
         getTitle();
         setJobElements();
         getJobElements();
+        //setLocation();
+        //getLocation();
         quitDriver();
     }
 
     public void initiateDriver ()
     {
+            driver.get("https://fsr.cvmailuk.com/nortonrosefulbright/main.cfm?srxksl=1");
 
-        driver.get("https://fsr.cvmailuk.com/nortonrosefulbright/main.cfm?srxksl=1");
-    }
+ }
 
     public List<WebElement> setJobElements ()
 
@@ -46,8 +49,15 @@ public class AllensJobList {
 
     public List<WebElement> setLocation ()
     {
-
+        locationList = driver.findElements((By.className("jbTableTextStyle")));
         return locationList;
+    }
+
+    public void getLocation ()
+    {
+        for (int i = 0; i < locationList.size(); i++) {
+            System.out.println(locationList.get(i).getText());
+        }
     }
 
     public void getJobElements ()
