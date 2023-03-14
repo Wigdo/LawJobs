@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
@@ -15,6 +16,10 @@ public class AllensJobList {
     private WebDriver driver;
     private List<WebElement> jobList;
     private List<WebElement> locationList;
+
+    private List<WebElement> urlList;
+    private int counter;
+    private int i;
 
     public AllensJobList ()
 
@@ -27,9 +32,9 @@ public class AllensJobList {
 
         initiateDriver();
         getTitle();
-
-        setMelbourne();
+        setMelbourneJobs();
         getJobs();
+        setURLs();
         quitDriver();
     }
 
@@ -46,13 +51,10 @@ public class AllensJobList {
         return jobList;
     }
 
-    public List<WebElement> setLocation ()
-    {
-        locationList = driver.findElements((By.className("jbTableTextStyle")));
-        return locationList;
-    }
 
-    public List<WebElement> setMelbourne ()
+
+
+    public List<WebElement> setMelbourneJobs ()
     {
         WebElement location = driver.findElement(By.xpath("//*[@id=\"groupType_8\"]/option[24]"));
         location.click();
@@ -64,37 +66,44 @@ public class AllensJobList {
 
         jobList = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
         return jobList;
-
     }
 
-    public void getJobs ()
+    public int getJobs ()
     {
+          counter = 0;
+
             for (int i = 0; i < jobList.size(); i++) {
 
                     System.out.println(jobList.get(i).getText());
+                    counter ++;
             }
+            System.out.println(counter);
+
+            return counter;
     }
 
-    public void getLocation ()
+    public ArrayList<String> setURLs ()
     {
-        for (int i = 0; i < locationList.size(); i++)
-        {
-                if (locationList.get(i).getText().equals("Melbourne"));
+        i = 2;
+
+        ArrayList <String> rlList = new ArrayList<>();
+
+        for (int x = 0; x < counter; x++) {
+
+            if (i <= counter)
             {
-                System.out.println(locationList.get(i).getText());
+                i++;
             }
+            String row = Integer.toString(i-1);
+            rlList.add(driver.findElement(By.xpath("//*[@id=\"jobBoard\"]/tbody/tr[3]/td/table/tbody/tr/td/table/tbody/tr[" + row + "]/td[2]/a")).getAttribute("href"));
         }
-    }
 
-    public void getJobElements ()
-    {
-        for (int i = 0; i < jobList.size(); i++) {
-
-            if (jobList.get(i).getText().contains("Associate")) {
-
-                System.out.println(jobList.get(i).getText());
-            }
+        for (int x = 0; x < rlList.size(); x++)
+        {
+            System.out.println(rlList.get(x));
         }
+
+        return rlList;
     }
 
     public void getTitle()
