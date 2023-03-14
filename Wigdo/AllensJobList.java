@@ -27,10 +27,9 @@ public class AllensJobList {
 
         initiateDriver();
         getTitle();
-        setJobElements();
-        getJobElements();
-        //setLocation();
-        //getLocation();
+
+        setMelbourne();
+        getJobs();
         quitDriver();
     }
 
@@ -53,17 +52,48 @@ public class AllensJobList {
         return locationList;
     }
 
+    public List<WebElement> setMelbourne ()
+    {
+        WebElement location = driver.findElement(By.xpath("//*[@id=\"groupType_8\"]/option[24]"));
+        location.click();
+
+        WebElement search = driver.findElement(By.className("jbFilterButtonStyleSpecial"));
+        search.click();
+
+        System.out.println(driver.getCurrentUrl());
+
+        jobList = driver.findElements(By.className("jobMoreDetailCaptionStyle"));
+        return jobList;
+
+    }
+
+    public void getJobs ()
+    {
+            for (int i = 0; i < jobList.size(); i++) {
+
+                    System.out.println(jobList.get(i).getText());
+            }
+    }
+
     public void getLocation ()
     {
-        for (int i = 0; i < locationList.size(); i++) {
-            System.out.println(locationList.get(i).getText());
+        for (int i = 0; i < locationList.size(); i++)
+        {
+                if (locationList.get(i).getText().equals("Melbourne"));
+            {
+                System.out.println(locationList.get(i).getText());
+            }
         }
     }
 
     public void getJobElements ()
     {
         for (int i = 0; i < jobList.size(); i++) {
-            System.out.println(jobList.get(i).getText());
+
+            if (jobList.get(i).getText().contains("Associate")) {
+
+                System.out.println(jobList.get(i).getText());
+            }
         }
     }
 
