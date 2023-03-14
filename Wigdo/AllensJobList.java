@@ -51,9 +51,6 @@ public class AllensJobList {
         return jobList;
     }
 
-
-
-
     public List<WebElement> setMelbourneJobs ()
     {
         WebElement location = driver.findElement(By.xpath("//*[@id=\"groupType_8\"]/option[24]"));
@@ -90,7 +87,7 @@ public class AllensJobList {
 
         for (int x = 0; x < counter; x++) {
 
-            if (i <= counter)
+            if (i <= counter + 1)
             {
                 i++;
             }
